@@ -15,14 +15,32 @@ const imagesArray = [
 
 imageButton.addEventListener('click', function(event){
     event.preventDefault();
+// create the div that will hold the image and the delete button
+    const imageDiv = document.createElement('div');
+// add the CSS class that will automatically add style to the images and the delete button
+    imageDiv.classList.add('image-div')
 
+// create the image
     const imageElement = document.createElement('img')
-
+// variable that randomly picks from the array of image urls
     const randomImageIndex = Math.floor(Math.random() * imagesArray.length)
 
+
+//create the delete button 
+    const deleteButton = document.createElement('button')
+    deleteButton.textContent = 'Delete';
+    deleteButton.addEventListener('click', function(){
+        imageDiv.remove()
+    })
+
+
+//Set the src attribute of the image created
     imageElement.setAttribute('src', imagesArray[randomImageIndex])
-    //create image element. give it the url as the source
-    imageContainer.appendChild(imageElement)
-    // append to the imageContainer
+// append the image to to the imageContainer    
+    imageDiv.appendChild(imageElement);
+    imageDiv.appendChild(deleteButton);
+
+    imageContainer.appendChild(imageDiv);
+    
 })
 
